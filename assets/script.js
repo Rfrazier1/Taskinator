@@ -1,15 +1,30 @@
-console.dir (window.document);
 var buttonEl = document.querySelector("#save-task");
-var tasksToEl=document.querySelector("#tasks-to-do");
+var tasksToDoEl = document.querySelector("#tasks-to-do");
 
-var createTaskHandler=function(){
-    var listItemEl=document.createElement("li");
-    listItemEl.textContent="this is a new task.";
+
+
+ var taskNameInput = document.querySelector("input[name='task-name']").value;
+ var taskTypeInput= document.querySelector("select[name='task-type']")
+
+var createTaskHandler = function (event) {
+  event.preventDefault();
+//create list item
+  var listItemEl = document.createElement("li");
+  listItemEl.className = "task-item";
+
+  //create div to hold info and add to list item
+  var taskInfoEl = document.createElement("div");
+  //give it a class name
+  taskInfoEl.className="task-info";
+  //add HTML content to div
+  taskInfoEl.innerHTML=" <h3 class='task-name'>" + taskNameInput + "</h3><span class='task-type'> " + taskTypeInput + " </span>";
+ // listItemEl.textContent = taskNameInput;
+
+  //add entire list item to list
+  tasksToDoEl.appendChild(listItemEl);
+formEl.addEventListener("submit", createTaskHandler);
 };
+
 buttonEl.addEventListener("click", createTaskHandler);
-var listItemEl=document.createElement("li");
-listItemEl.className="task-item";
-listItemEl.textContent="This is a new task.";
-tasksToEl.appendChild(listItemEl);
 
-
+ 
